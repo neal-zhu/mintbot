@@ -30,9 +30,11 @@ class BlockListener(Thread):
             mint_num += 1
             if self._w3.toBytes(hexstr=tx['from']) not in log['topics'][2]:
                 mint_to = True
-                input = input.replace(
-                    log['topics'][2],
-                    f"000000000000000000000000{tx['from'].lower()}")
+
+        if mint_to:
+            input = input.replace(
+                log['topics'][2],
+                f"000000000000000000000000{tx['from'].lower()}")
 
         return MintInfo(mint_num, tx['gasPrice'], tx['value'], mint_to,
                         tx['to'], input, tx['hash'].hex(), tx['blockNumber'],

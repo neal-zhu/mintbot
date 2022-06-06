@@ -1,3 +1,6 @@
+"""参考子 ethereumetl_airflow 代码，修正其中一个 bug
+"""
+
 from eth_utils import function_signature_to_4byte_selector
 
 from ethereum_dasm.evmdasm import EvmCode, Contract
